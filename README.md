@@ -7,21 +7,8 @@ yarn deploy # To deploy contract
 
 Remember to go to `depoly.ts` to change the parameters you want!
 
-This GitHub repository is dedicated to an NFT standard(TEP-62)[https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md], which provides a set of guidelines and specifications for creating and managing non-fungible tokens (NFTs) on blockchain platforms.
+---
 
-The repository contains a comprehensive collection of code files, documentation, and resources that developers can utilize to implement the standard in their NFT projects. It offers a well-defined structure and functionality for NFT contracts, including features like token metadata, ownership transfers, and token enumeration. The repository also includes sample code and examples to help developers understand and implement the NFT standard more easily. Collaborators and contributors actively maintain and update the repository, ensuring it remains up-to-date with the latest advancements and best practices in the NFT ecosystem.
+This repo is for [Hack-a-ton](https://www.defi-hackaton.com/) usage. Still in testing and need for auditing if you want to use in production.
 
--   https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md
--   https://github.com/ton-blockchain/TEPs/blob/master/text/0064-token-data-standard.md
--   https://github.com/ton-blockchain/TEPs/blob/master/text/0066-nft-royalty-standard.md
-
-## More
-
-For more information about this GitHub repository, or if you have any questions related to Tact, feel free to visit:
-
--   https://t.me/ton101
--   https://t.me/tactlang
-
-If you have more specific questions related to the Tact Language, please refer to:
-
--   https://tact-lang.org/
+more question, can ask me on [https://t.me/ton101](https://t.me/ton101)
