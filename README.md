@@ -55,7 +55,9 @@ _In the following content, we will refer to Telegram Anonymous Phone as TAP._
 3. [WIP] Users can request to withdraw their TAP NFT back to their wallet at any time.
 4. [WIP] We will approve this process and then execute the transaction.
 
----
+### The backend diagram:
+
+![The backend structure](image-3.png)
 
 # Demo
 
