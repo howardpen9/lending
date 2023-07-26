@@ -1,4 +1,4 @@
-# NFT Standard in Tact
+# TAP Lending Protocol V1
 
 ```bash
 yarn build # To build contract
