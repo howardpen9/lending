@@ -1,0 +1,133 @@
+;;
+;; Type: SendParameters
+;; TLB: _ bounce:bool to:address value:int257 mode:int257 body:Maybe ^cell code:Maybe ^cell data:Maybe ^cell = SendParameters
+;;
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_bounce_mode_body(slice to, int value, int bounce, int mode, cell body) inline {
+    return (bounce, to, value, mode, body, null(), null());
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_value_to_mode(int value, slice to, int mode) inline {
+    return (true, to, value, mode, null(), null(), null());
+}
+
+;;
+;; Type: OwnershipAssigned
+;; Header: 0x05138d91
+;; TLB: ownership_assigned#05138d91 query_id:uint64 prev_owner:address forward_payload:remainder<slice> = OwnershipAssigned
+;;
+
+(slice, ((int, slice, slice))) $OwnershipAssigned$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 85167505);
+    var v'query_id = sc_0~load_uint(64);
+    var v'prev_owner = sc_0~__tact_load_address();
+    var v'forward_payload = sc_0;
+    return (sc_0, (v'query_id, v'prev_owner, v'forward_payload));
+}
+
+;;
+;; Type: Excesses
+;; Header: 0xd53276db
+;; TLB: excesses#d53276db query_id:uint64 = Excesses
+;;
+
+(slice, ((int))) $Excesses$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3576854235);
+    var v'query_id = sc_0~load_uint(64);
+    return (sc_0, (v'query_id));
+}
+
+;;
+;; Type: Transfer
+;; Header: 0x5fcc3d14
+;; TLB: transfer#5fcc3d14 query_id:uint64 new_owner:address response_destination:address custom_payload:Maybe ^cell forward_amount:coins forward_payload:remainder<slice> = Transfer
+;;
+
+builder $Transfer$_store(builder build_0, (int, slice, slice, cell, int, slice) v) inline_ref {
+    var (v'query_id, v'new_owner, v'response_destination, v'custom_payload, v'forward_amount, v'forward_payload) = v;
+    build_0 = store_uint(build_0, 1607220500, 32);
+    build_0 = build_0.store_uint(v'query_id, 64);
+    build_0 = __tact_store_address(build_0, v'new_owner);
+    build_0 = __tact_store_address(build_0, v'response_destination);
+    build_0 = ~ null?(v'custom_payload) ? build_0.store_int(true, 1).store_ref(v'custom_payload) : build_0.store_int(false, 1);
+    build_0 = build_0.store_coins(v'forward_amount);
+    build_0 = build_0.store_slice(v'forward_payload);
+    return build_0;
+}
+
+cell $Transfer$_store_cell((int, slice, slice, cell, int, slice) v) inline {
+    return $Transfer$_store(begin_cell(), v).end_cell();
+}
+
+((int, slice, slice, cell, int, slice)) $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload(int query_id, slice new_owner, slice response_destination, cell custom_payload, int forward_amount, slice forward_payload) inline {
+    return (query_id, new_owner, response_destination, custom_payload, forward_amount, forward_payload);
+}
+
+;;
+;; Type: Admin_Deposit
+;; Header: 0x5d3cf791
+;; TLB: admin_deposit#5d3cf791 nft_item_address:address = Admin_Deposit
+;;
+
+(slice, ((slice))) $Admin_Deposit$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 1564276625);
+    var v'nft_item_address = sc_0~__tact_load_address();
+    return (sc_0, (v'nft_item_address));
+}
+
+;;
+;; Type: Admin_Withdraw
+;; Header: 0xdd1d4ceb
+;; TLB: admin_withdraw#dd1d4ceb nft_item_address:address = Admin_Withdraw
+;;
+
+(slice, ((slice))) $Admin_Withdraw$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3709684971);
+    var v'nft_item_address = sc_0~__tact_load_address();
+    return (sc_0, (v'nft_item_address));
+}
+
+;;
+;; Type: lending_record
+;;
+
+builder $lending_record$_store(builder build_0, (slice, cell) v) inline {
+    var (v'owner, v'record) = v;
+    build_0 = __tact_store_address(build_0, v'owner);
+    build_0 = build_0.store_dict(v'record);
+    return build_0;
+}
+
+(slice, ((slice, cell))) $lending_record$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    var v'record = sc_0~load_dict();
+    return (sc_0, (v'owner, v'record));
+}
+
+(slice, ((slice))) $lending_record$init$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    return (sc_0, (v'owner));
+}
+
+(slice, cell) $lending_record$_contract_load() impure inline_ref {
+    slice $sc = get_data().begin_parse();
+    __tact_context_sys = $sc~load_ref();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$lending_record$_load();
+    } else {
+        ;; Allow only workchain deployments
+        throw_unless(137, my_address().preload_uint(11) == 1024);
+        (slice owner) = $sc~$lending_record$init$_load();
+        $sc.end_parse();
+        return $lending_record$_contract_init(owner);
+    }
+}
+
+() $lending_record$_contract_store((slice, cell) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_ref(__tact_context_sys);
+    b = b.store_int(true, 1);
+    b = $lending_record$_store(b, v);
+    set_data(b.end_cell());
+}

@@ -1,0 +1,601 @@
+PROGRAM{
+  DECLPROC __tact_verify_address
+  DECLPROC __tact_load_address
+  DECLPROC __tact_store_address
+  DECLPROC __tact_not_null
+  DECLPROC __tact_context_get
+  DECLPROC __tact_store_bool
+  DECLPROC __tact_dict_set_slice_slice
+  DECLPROC __tact_dict_get_slice_slice
+  DECLPROC __tact_slice_eq_bits
+  DECLPROC $OwnershipAssigned$_load
+  DECLPROC $Excesses$_load
+  DECLPROC $Transfer$_store
+  DECLPROC $Transfer$_store_cell
+  DECLPROC $Admin_Deposit$_load
+  DECLPROC $Admin_Withdraw$_load
+  DECLPROC $lending_record$_store
+  DECLPROC $lending_record$_load
+  DECLPROC $lending_record$init$_load
+  DECLPROC $lending_record$_contract_init
+  DECLPROC $lending_record$_contract_load
+  DECLPROC $lending_record$_contract_store
+  DECLPROC $global_emptyCell
+  DECLPROC $Cell$_fun_asSlice
+  DECLPROC $global_emptySlice
+  DECLPROC $global_send
+  DECLPROC $lending_record$_fun_get_record
+  DECLPROC $SendParameters$_constructor_to_value_bounce_mode_body
+  DECLPROC $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload
+  DECLPROC $SendParameters$_constructor_value_to_mode
+  DECLPROC $lending_record$_internal_binary_OwnershipAssigned
+  DECLPROC $lending_record$_internal_binary_Excesses
+  DECLPROC $lending_record$_internal_binary_Admin_Deposit
+  DECLPROC $lending_record$_internal_binary_Admin_Withdraw
+  115713 DECLMETHOD %get_record
+  113617 DECLMETHOD supported_interfaces
+  121275 DECLMETHOD get_abi_ipfs
+  115390 DECLMETHOD lazy_deployment_completed
+  DECLPROC $lending_record$_contract_router_internal
+  DECLPROC recv_internal
+  DECLGLOBVAR __tact_context
+  DECLGLOBVAR __tact_context_sender
+  DECLGLOBVAR __tact_context_sys
+  DECLGLOBVAR __tact_randomized
+  __tact_verify_address PROCINLINE:<{
+    DUP
+    SBITS
+    267 PUSHINT
+    EQUAL
+    136 THROWIFNOT
+    DUP
+    11 PLDU
+    DUP
+    1279 PUSHINT
+    EQUAL
+    137 THROWIF
+    10 PUSHPOW2
+    EQUAL
+    136 THROWIFNOT
+  }>
+  __tact_load_address PROCINLINE:<{
+    LDMSGADDR
+    SWAP
+    __tact_verify_address INLINECALLDICT
+  }>
+  __tact_store_address PROCINLINE:<{
+    __tact_verify_address INLINECALLDICT
+    STSLICER
+  }>
+  __tact_not_null PROCINLINE:<{
+    DUP
+    ISNULL
+    128 THROWIF
+  }>
+  __tact_context_get PROCINLINE:<{
+    __tact_context GETGLOB
+    4 UNTUPLE
+  }>
+  __tact_store_bool PROCINLINE:<{
+    SWAP
+    1 STI
+  }>
+  __tact_dict_set_slice_slice PROCINLINE:<{
+    DUP
+    ISNULL
+    IF:<{
+      DROP
+      -ROT
+      DICTDEL
+      DROP
+    }>ELSE<{
+      NEWC
+      SWAP
+      STSLICER
+      s1 s3 s3 XCHG3
+      DICTSETB
+    }>
+  }>
+  __tact_dict_get_slice_slice PROCINLINE:<{
+    -ROT
+    DICTGET
+    NULLSWAPIFNOT
+    IF:<{
+    }>ELSE<{
+      DROP
+      PUSHNULL
+    }>
+  }>
+  __tact_slice_eq_bits PROCINLINE:<{
+    SDEQ
+  }>
+  $OwnershipAssigned$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    85167505 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    64 LDU
+    __tact_load_address INLINECALLDICT
+    s2 s0 s2 XC2PU
+  }>
+  $Excesses$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    3576854235 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    64 LDU
+    SWAP
+  }>
+  $Transfer$_store PROCREF:<{
+    1607220500 PUSHINT
+    s0 s7 XCHG2
+    32 STU
+    s1 s5 XCHG
+    64 STU
+    s0 s3 XCHG2
+    __tact_store_address INLINECALLDICT
+    SWAP
+    __tact_store_address INLINECALLDICT
+    OVER
+    ISNULL
+    NOT
+    IF:<{
+      TRUE
+      SWAP
+      1 STI
+      STREF
+    }>ELSE<{
+      FALSE
+      s2 POP
+      1 STI
+    }>
+    SWAP
+    STGRAMS
+    SWAP
+    STSLICER
+  }>
+  $Transfer$_store_cell PROCINLINE:<{
+    NEWC
+    6 -ROLL
+    $Transfer$_store INLINECALLDICT
+    ENDC
+  }>
+  $Admin_Deposit$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    1564276625 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    __tact_load_address INLINECALLDICT
+  }>
+  $Admin_Withdraw$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    3709684971 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    __tact_load_address INLINECALLDICT
+  }>
+  $lending_record$_store PROCINLINE:<{
+    -ROT
+    __tact_store_address INLINECALLDICT
+    STDICT
+  }>
+  $lending_record$_load PROCINLINE:<{
+    __tact_load_address INLINECALLDICT
+    SWAP
+    LDDICT
+    -ROT
+  }>
+  $lending_record$init$_load PROCINLINE:<{
+    __tact_load_address INLINECALLDICT
+  }>
+  $lending_record$_contract_init PROCREF:<{
+    PUSHNULL
+  }>
+  $lending_record$_contract_load PROCREF:<{
+    c4 PUSH
+    CTOS
+    LDREF
+    SWAP
+    __tact_context_sys SETGLOB
+    1 LDI
+    SWAP
+    IFJMP:<{
+      $lending_record$_load INLINECALLDICT
+      1 2 BLKDROP2
+    }>
+    MYADDR
+    11 PLDU
+    10 PUSHPOW2
+    EQUAL
+    137 THROWIFNOT
+    $lending_record$init$_load INLINECALLDICT
+    SWAP
+    ENDS
+    $lending_record$_contract_init INLINECALLDICT
+  }>
+  $lending_record$_contract_store PROCINLINE:<{
+    NEWC
+    __tact_context_sys GETGLOB
+    SWAP
+    STREF
+    TRUE
+    SWAP
+    1 STI
+    -ROT
+    $lending_record$_store INLINECALLDICT
+    ENDC
+    c4 POP
+  }>
+  $global_emptyCell PROCINLINE:<{
+    NEWC
+    ENDC
+  }>
+  $Cell$_fun_asSlice PROCINLINE:<{
+    CTOS
+  }>
+  $global_emptySlice PROCINLINE:<{
+    $global_emptyCell INLINECALLDICT
+    $Cell$_fun_asSlice INLINECALLDICT
+  }>
+  $global_send PROCREF:<{
+    NEWC
+    1 PUSHINT
+    SWAP
+    2 STI
+    s0 s7 XCHG2
+    __tact_store_bool INLINECALLDICT
+    0 PUSHINT
+    SWAP
+    3 STI
+    s0 s5 XCHG2
+    __tact_store_address INLINECALLDICT
+    s0 s3 XCHG2
+    STGRAMS
+    0 PUSHINT
+    SWAP
+    105 STI
+    s3 PUSH
+    ISNULL
+    NOT
+    IF:<{
+      TRUE
+    }>ELSE<{
+      s4 PUSH
+      ISNULL
+      NOT
+    }>
+    IF:<{
+      TRUE
+      __tact_store_bool INLINECALLDICT
+      NEWC
+      FALSE
+      __tact_store_bool INLINECALLDICT
+      FALSE
+      __tact_store_bool INLINECALLDICT
+      s4 PUSH
+      ISNULL
+      NOT
+      IF:<{
+        TRUE
+        __tact_store_bool INLINECALLDICT
+        s0 s4 XCHG
+        __tact_not_null INLINECALLDICT
+        s0 s4 XCHG2
+        STREF
+      }>ELSE<{
+        s4 POP
+        s0 s3 XCHG
+        FALSE
+        __tact_store_bool INLINECALLDICT
+      }>
+      s4 PUSH
+      ISNULL
+      NOT
+      IF:<{
+        TRUE
+        __tact_store_bool INLINECALLDICT
+        s0 s4 XCHG
+        __tact_not_null INLINECALLDICT
+        s0 s4 XCHG2
+        STREF
+      }>ELSE<{
+        s4 POP
+        s0 s3 XCHG
+        FALSE
+        __tact_store_bool INLINECALLDICT
+      }>
+      FALSE
+      __tact_store_bool INLINECALLDICT
+      s0 s2 XCHG
+      TRUE
+      __tact_store_bool INLINECALLDICT
+      s0 s2 XCHG
+      ENDC
+      ROT
+      STREF
+    }>ELSE<{
+      s3 POP
+      s3 POP
+      SWAP
+      FALSE
+      __tact_store_bool INLINECALLDICT
+    }>
+    OVER
+    ISNULL
+    NOT
+    IF:<{
+      TRUE
+      __tact_store_bool INLINECALLDICT
+      SWAP
+      __tact_not_null INLINECALLDICT
+      SWAP
+      STREF
+    }>ELSE<{
+      NIP
+      FALSE
+      __tact_store_bool INLINECALLDICT
+    }>
+    ENDC
+    SWAP
+    SENDRAWMSG
+  }>
+  $lending_record$_fun_get_record PROCREF:<{
+    DUP
+  }>
+  $SendParameters$_constructor_to_value_bounce_mode_body PROCINLINE:<{
+    s2 s4 XCHG
+    s2 s3 XCHG
+    PUSHNULL
+    PUSHNULL
+  }>
+  $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload PROCINLINE:<{
+  }>
+  $SendParameters$_constructor_value_to_mode PROCINLINE:<{
+    TRUE
+    s3 s3 XCHG2
+    PUSHNULL
+    PUSHNULL
+    PUSHNULL
+  }>
+  $lending_record$_internal_binary_OwnershipAssigned PROCINLINE:<{
+    DROP
+    NIP
+    __tact_context_get INLINECALLDICT
+    s2 s3 XCHG
+    3 BLKDROP
+    s3 s1 PUSH2
+    __tact_slice_eq_bits INLINECALLDICT
+    IF:<{
+      NIP
+      OVER
+      267 PUSHINT
+      s2 PUSH
+      __tact_dict_get_slice_slice INLINECALLDICT
+      DUP
+      ISNULL
+      DROP
+      s0 s2 XCHG
+      267 PUSHINT
+      s2 PUSH
+      PUSHNULL
+      __tact_dict_set_slice_slice INLINECALLDICT
+      0 PUSHINT
+      FALSE
+      66 PUSHINT
+      s2 PUSH
+      s0 s6 XCHG
+      __tact_not_null INLINECALLDICT
+      MYADDR
+      $global_emptyCell INLINECALLDICT
+      1 PUSHINT
+      $global_emptySlice INLINECALLDICT
+      s5 s10 XCHG
+      $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload INLINECALLDICT
+      $Transfer$_store_cell INLINECALLDICT
+      s1 s3 s0 XCHG3
+      s1 s5 XCHG
+      $SendParameters$_constructor_to_value_bounce_mode_body INLINECALLDICT
+      $global_send INLINECALLDICT
+    }>ELSE<{
+      s1 s2 XCHG
+      267 PUSHINT
+      s0 s0 s3 XCPUXC
+      __tact_dict_set_slice_slice INLINECALLDICT
+      0 PUSHINT
+      FALSE
+      66 PUSHINT
+      s2 PUSH
+      MYADDR
+      $global_emptyCell INLINECALLDICT
+      30000000 PUSHINT
+      $global_emptySlice INLINECALLDICT
+      s10 PUSH
+      4 -ROLL
+      $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload INLINECALLDICT
+      $Transfer$_store_cell INLINECALLDICT
+      s4 s5 XCHG
+      $SendParameters$_constructor_to_value_bounce_mode_body INLINECALLDICT
+      $global_send INLINECALLDICT
+    }>
+  }>
+  $lending_record$_internal_binary_Excesses PROCINLINE:<{
+    DROP
+    0 PUSHINT
+    s2 PUSH
+    66 PUSHINT
+    $SendParameters$_constructor_value_to_mode INLINECALLDICT
+    $global_send INLINECALLDICT
+  }>
+  $lending_record$_internal_binary_Admin_Deposit PROCINLINE:<{
+    __tact_context_get INLINECALLDICT
+    s2 s3 XCHG
+    3 BLKDROP
+    s3 PUSH
+    47422 PUSHINT
+    s0 s2 XCHG
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+    0 PUSHINT
+    FALSE
+    66 PUSHINT
+    s2 PUSH
+    MYADDR
+    $global_emptyCell INLINECALLDICT
+    1 PUSHINT
+    $global_emptySlice INLINECALLDICT
+    s10 PUSH
+    4 -ROLL
+    $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload INLINECALLDICT
+    $Transfer$_store_cell INLINECALLDICT
+    $SendParameters$_constructor_to_value_bounce_mode_body INLINECALLDICT
+    $global_send INLINECALLDICT
+  }>
+  $lending_record$_internal_binary_Admin_Withdraw PROCINLINE:<{
+    __tact_context_get INLINECALLDICT
+    s2 s3 XCHG
+    3 BLKDROP
+    s3 PUSH
+    47422 PUSHINT
+    s0 s2 XCHG
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+    OVER
+    267 PUSHINT
+    s2 PUSH
+    __tact_dict_get_slice_slice INLINECALLDICT
+    DUP
+    ISNULL
+    IF:<{
+      31535 PUSHINT
+      OVER
+      ISNULL
+      THROWANYIFNOT
+    }>
+    s0 s2 XCHG
+    267 PUSHINT
+    s2 PUSH
+    PUSHNULL
+    __tact_dict_set_slice_slice INLINECALLDICT
+    0 PUSHINT
+    FALSE
+    66 PUSHINT
+    s2 PUSH
+    s0 s6 XCHG
+    __tact_not_null INLINECALLDICT
+    MYADDR
+    $global_emptyCell INLINECALLDICT
+    1 PUSHINT
+    $global_emptySlice INLINECALLDICT
+    s5 s10 XCHG
+    $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload INLINECALLDICT
+    $Transfer$_store_cell INLINECALLDICT
+    s1 s3 s0 XCHG3
+    s1 s5 XCHG
+    $SendParameters$_constructor_to_value_bounce_mode_body INLINECALLDICT
+    $global_send INLINECALLDICT
+  }>
+  %get_record PROC:<{
+    $lending_record$_contract_load INLINECALLDICT
+    $lending_record$_fun_get_record INLINECALLDICT
+    2 1 BLKDROP2
+  }>
+  supported_interfaces PROC:<{
+    123515602279859691144772641439386770278 PUSHINT
+    209801025412363888721030803524359905849 PUSHINT
+    42980537499636128163026532310500881091 PUSHINT
+    209474421377847335869795010607481022628 PUSHINT
+  }>
+  get_abi_ipfs PROC:<{
+    x{697066733a2f2f516d624c65727769334837574e6f79343334784774644159624171565a4c65766a613641454c3161597764534879} PUSHSLICE
+  }>
+  lazy_deployment_completed PROC:<{
+    c4 PUSH
+    CTOS
+    1 LDI
+    SWAP
+  }>
+  $lending_record$_contract_router_internal PROCREF:<{
+    SWAP
+    IFJMP:<{
+      DROP
+      TRUE
+    }>
+    0 PUSHINT
+    OVER
+    SBITS
+    31 GTINT
+    IF:<{
+      DROP
+      DUP
+      32 PLDU
+    }>
+    DUP
+    85167505 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $OwnershipAssigned$_load INLINECALLDICT
+      1 3 BLKDROP2
+      $lending_record$_internal_binary_OwnershipAssigned INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    3576854235 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $Excesses$_load INLINECALLDICT
+      NIP
+      $lending_record$_internal_binary_Excesses INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    1564276625 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $Admin_Deposit$_load INLINECALLDICT
+      NIP
+      $lending_record$_internal_binary_Admin_Deposit INLINECALLDICT
+      TRUE
+    }>
+    3709684971 PUSHINT
+    EQUAL
+    IFJMP:<{
+      $Admin_Withdraw$_load INLINECALLDICT
+      NIP
+      $lending_record$_internal_binary_Admin_Withdraw INLINECALLDICT
+      TRUE
+    }>
+    DROP
+    FALSE
+  }>
+  recv_internal PROC:<{
+    SWAP
+    CTOS
+    4 LDU
+    SWAP
+    1 PUSHINT
+    AND
+    NEGATE
+    SWAP
+    LDMSGADDR
+    SWAP
+    __tact_verify_address INLINECALLDICT
+    s0 s4 s2 PUXCPU
+    s0 s3 XCHG
+    4 TUPLE
+    __tact_context SETGLOB
+    s0 s2 XCHG
+    __tact_context_sender SETGLOB
+    $lending_record$_contract_load INLINECALLDICT
+    2SWAP
+    $lending_record$_contract_router_internal INLINECALLDICT
+    130 THROWIFNOT
+    $lending_record$_contract_store INLINECALLDICT
+  }>
+}END>c
