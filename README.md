@@ -65,4 +65,4 @@ _In the following content, we will refer to Telegram Anonymous Phone as TAP._
 
 # Questions?
 
-more question, can ask me on [https://t.me/TAP_Lending1](https://t.me/TAP_Lending)
+more question, can ask me on [https://t.me/TAP_Lending](https://t.me/TAP_Lending)
